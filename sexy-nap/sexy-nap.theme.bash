@@ -42,7 +42,7 @@ function parse_virtualenv () {
     if [[ $VIRTUAL_ENV ]]; then
         PARENT_ENV_DIR="$(dirname "$VIRTUAL_ENV")"
         ENV_DIR="${PARENT_ENV_DIR##*/}"
-        
+
         if [[ $ENV_DIR == ".virtualenvs" ]]; then
             echo "(${VIRTUAL_ENV##*/}) "
         else
@@ -57,8 +57,8 @@ function prompt_command() {
     else
         VIRTUALENV_PREFIX=''
     fi
-    
-    PS1="$VIRTUALENV_PREFIX\[${BOLD}${MAGENTA}\]\u\[$WHITE\]x\[$ORANGE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\] \n\$ \[$RESET\]"
+
+    PS1="$VIRTUALENV_PREFIX\[${BOLD}${MAGENTA}\]\u\e[90m\]x\[$ORANGE\]\h \e[97m\]in \[$GREEN\]\w\e[90m\]\e[90m\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\e[90m\] \n\$ \[$RESET\]"
 }
 
 PROMPT_COMMAND=prompt_command
